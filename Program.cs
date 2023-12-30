@@ -1,4 +1,14 @@
+using backend.Core.Context;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+// DB Connexion
+// configure and register ApplicationDbContext as service and definde the SQL Server like a database and obteim the connection from local String
+// in appsettings.json
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("local"));
+});
 
 // Add services to the container.
 
