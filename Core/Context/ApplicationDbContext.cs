@@ -32,6 +32,16 @@ namespace backend.Core.Context
                 // job can be have many candidate
                 .WithMany(jobs => jobs.candidates)
                 .HasForeignKey(candidate => candidate.jobId);
+
+            // convert the champ size in table companies to string 
+            modelBuilder.Entity<Company>()
+                .Property(company => company.size)
+                .HasConversion<string>();
+
+            // convert the champ level in tabel jobs to string
+            modelBuilder.Entity<Job>()
+                .Property(job => job.level)
+                .HasConversion<string>();
   
         }
     }
