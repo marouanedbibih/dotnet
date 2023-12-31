@@ -8,7 +8,13 @@ namespace backend.Core.AutoMapperConfig
     {
         public AutoMapperConfigProfile() {
 
+            // Company
             CreateMap<CompanyCreateDto, Company>();
+            CreateMap<Company, CompanyGetDto>();
+
+            // Candidate
+
+            // Jobs
         }
     }
 }

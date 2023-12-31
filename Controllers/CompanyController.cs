@@ -4,6 +4,7 @@ using backend.Core.Dtos.Company;
 using backend.Core.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace backend.Controllers
 {
@@ -31,6 +32,16 @@ namespace backend.Controllers
 
             return Ok("Company created successfully");
 
+        }
+        [HttpGet]
+        [Route("get")]
+
+        public async Task<ActionResult<IEnumerable<CompanyGetDto>>> getCompanies()
+        {
+            var companies = await context.companies.ToListAsync();
+            var convertedCompanies = mapper.Map<IEnumerable<CompanyGetDto>>(companies);
+
+            return Ok(convertedCompanies);
         }
 
 
